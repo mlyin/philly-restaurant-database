@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<!-- This is a simple example template with a form that has a single input field. 
+		   You'll need something similar for the login page -->
+  <h1>Restaurants page</h1>
+  
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_vvdzenxeh3LU7TPXsy4pdvkha4I5XBI&callback=initMap"></script>
+  
+  <table>
+	<tr>
+	  <th>Name</th>
+	  <th>Latitude</th>
+	  <th>Longitude</th>
+	  <th>Description</th>
+	  <th>Creator</th>
+	</tr>
+	<br></br>
+	<% for (var i = 0; i < result.Count; i++) { %>
+	  	<tr>
+	  		<td><%= result.Items[i].name %></td>
+	  		<td><%= result.Items[i].latitude %></td>
+	  		<td><%= result.Items[i].longitude %></td>
+	 		<td><%= result.Items[i].description %></td>
+	 		<td><%= result.Items[i].creator %></td>
+	  	</tr>
+	<% } %>
+  </table>
+  
+  <br></br>
+ 
+   
+
+  <%if (message != null) { %>
+  <font color="red"><%= message %><p>
+  <% } %>
+  
+  <br></br>
+  Want to add another restaurant?
+  <form action="/addrestaurant" method="post">
+  	<div>
+  	<input type="text" name="username" placeholder="Restaurant name">
+  	</div>
+  	<div>
+    <input type="text" name="latitude" placeholder="Latitude goes here">
+    </div>
+    <div>
+    <input type="text" name="longitude" placeholder="Longitude goes here">
+    </div>
+    <div>
+    <input type="text" name="description" placeholder="Description goes here">
+    </div>
+    
+    <div>
+    <input type="submit" value="Add to database">
+    </div>
+    
+    <a href="/logout">Click to log out</a>
+  </form>
+  <h2> Matthew Yin - mlyin </h2>
+</body>
+</html>
